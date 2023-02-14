@@ -1,5 +1,4 @@
 import Button from '../components/button/button';
-import styles from './login-page.module.scss';
 
 /* eslint-disable-next-line */
 export interface LoginPageProps {
