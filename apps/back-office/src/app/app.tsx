@@ -1,16 +1,16 @@
+import { useState } from "react";
+import LoginPage from "./pages/login-page";
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
-
-import NxWelcome from './nx-welcome';
-
 export function App() {
-  return (
-    <>
-      <NxWelcome title="back-office" />
 
-      <div />
-    </>
-  );
+  const [signedIn, setSignedIn] = useState(false)
+
+  return signedIn ? (
+
+    <div >asdf</div>
+
+  ) : <LoginPage onSignIn={(user)=>setSignedIn(user!=null)}/>
 }
 
 export default App;
