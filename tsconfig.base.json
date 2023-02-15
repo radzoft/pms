@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@radzoft/pms-core": ["libs/core/src/index.ts"]
-    }
+    },
+    "types": ["google-one-tap","vite/client"]
   },
   "exclude": ["node_modules", "tmp"]
 }
