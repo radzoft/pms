@@ -48,6 +48,10 @@ export function LoginPage(props: LoginPageProps) {
   const sendCode = (e:FormEvent)=>{
     e.preventDefault()
     setProcessing(true)
+    setTimeout(() => {
+      setProcessing(false)
+      setEmailVerified(true)
+    }, 777);
     sendAccessCode(email).then(r=>{
       setProcessing(false)
       if(!r.data.success) {
@@ -66,7 +70,7 @@ export function LoginPage(props: LoginPageProps) {
 
   return (
     <div className="absolute flex flex-col items-center justify-center w-screen h-screen bg-stone-200">
-      <h1 className='text-2xl font-bold text-slate-800 mb-7'>Login to Radzoft PMS</h1>
+      <h1 className='text-2xl font-bold text-slate-800 mb-7'>Login to {import.meta.env.VITE_SITE_NAME}</h1>
       {
         emailVerified ?
           <form className='max-w-md flex flex-col items-center' onSubmit={e=>console.log(otp)}>
