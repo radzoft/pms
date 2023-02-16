@@ -7,10 +7,11 @@ declare global {
 
 export interface GoogleButtonProps {
   clientId: string,
-  onResult?: (token:string)=>void
+  onResult?: (token:string)=>void,
+  disabled?:boolean
 }
 
-const GoogleButton:FC<GoogleButtonProps> = ({clientId, onResult}) => {
+const GoogleButton:FC<GoogleButtonProps> = ({clientId, onResult, disabled}) => {
 
   const googleButton = useRef<HTMLDivElement>(null);
 
@@ -46,10 +47,13 @@ const GoogleButton:FC<GoogleButtonProps> = ({clientId, onResult}) => {
       const scriptTag = document.querySelector(`script[src="${src}"]`)
       if (scriptTag) document.body.removeChild(scriptTag)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clientId])
 
   return (
-    <div ref={googleButton} className="flex flex-col"></div>
+    <div className={`${disabled && 'cursor-not-allowed'}`}>
+      <div ref={googleButton} className={`${disabled && 'pointer-events-none opacity-50'}`}></div>
+    </div>
   )
 }
 
